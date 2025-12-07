@@ -1,45 +1,76 @@
-# EX01 Developing a Simple Webserver
-## Date:
+# Ex01 Django ORM Web Application
+## Date: 07/12/2025
+##Ref no: 25013942
 
-## AIM:
-To develop a simple webserver to serve html pages and display the list of protocols in TCP/IP Protocol Suite.
+## AIM
+To develop a Django Application to store and retrieve data from a E-Commerce Website Database for Amazon or Flipkart using Object Relational Mapping(ORM).
 
-## DESIGN STEPS:
-### Step 1: 
-HTML content creation.
+## DESIGN STEPS
 
-### Step 2:
-Design of webserver workflow.
+### STEP 1:
+Clone the problem from GitHub
 
-### Step 3:
-Implementation using Python code.
+### STEP 2:
+Create a new app in Django project
 
-### Step 4:
-Import the necessary modules.
+### STEP 3:
+Enter the code for admin.py and models.py
 
-### Step 5:
-Define a custom request handler.
+### STEP 4:
+Detect changes and create migration files that describe how to modify the database schema
 
-### Step 6:
-Start an HTTP server on a specific port.
+### STEP 5:
+Execute the migration files and update the database schema to match your Django models
 
-### Step 7:
-Run the Python script to serve web pages.
+### STEP 6:
+Create a superuser with full access rights to all models and data through the admin interface.
 
-### Step 8:
-Serve the HTML pages.
+### STEP 7:
+Apply the migration files of the created app to the database
 
-### Step 9:
-Start the server script and check for errors.
+### STEP 8:
+Execute Django admin using localhost and create details for 10 entries
 
-### Step 10:
-Open a browser and navigate to http://127.0.0.1:8000 (or the assigned port).
+## PROGRAM
+admin.py
+python
+from django.contrib import admin
+from .models import Product, ProductAdmin
 
-## PROGRAM:
+admin.site.register(Product, ProductAdmin)
+
+ models.py
+python
+from django.db import models
+from django.contrib import admin
+
+class Product(models.Model):
+    product_id = models.CharField(max_length=20, primary_key=True)
+    name = models.CharField(max_length=100)
+    category = models.CharField(max_length=50)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    rating = models.FloatField()
+    seller = models.CharField(max_length=100)
+    stock = models.IntegerField()
+    offer = models.CharField(max_length=50, blank=True)
+    delivery_date = models.DateField()
+
+class ProductAdmin(admin.ModelAdmin):
+    list_display = (
+        'product_id',
+        'name',
+        'category',
+        'price',
+        'rating',
+        'seller',
+        'stock',
+        'offer',
+        'delivery_date',
+    )
 
 
-## OUTPUT:
+## OUTPUT
+![web](https://github.com/user-attachments/assets/6cb4633c-6658-4071-8b80-f10954e79a68)
 
-
-## RESULT:
-The program for implementing simple webserver is executed successfully.
+## RESULT
+Thus the program for creating E-commerce website database using ORM hass been executed successfully
